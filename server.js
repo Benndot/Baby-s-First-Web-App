@@ -1,11 +1,9 @@
-// Making a basic web app to practice my skills
+// A basic web app 
 // 'npm run appTracker' to track and reload the web app as we save and make changes
 
 const { urlencoded, response } = require('express');
 const express = require('express');
 const app = express();
-
-console.log("Primary Server Online"); // Just a greeting message, can be used for debugging
 
 // app.use(logger); // Setting the logger function defined near the bottom of this file to run up here
 
@@ -30,8 +28,6 @@ app.use(express.json())  // Allows for the parsing of json files from the html/e
 
 app.set('views', './views');  // Setting the directory where the viewing media is kept. Not actually necessary here, because 'views' is ejs' default folder location name
 app.set('view engine', 'ejs');  // Setting up the viewing engine itself (installed package ejs + ejs language support extension)
-
-let port_number = 3000;
 
 app.get('/', (request, response, next) => {
     response.status(200).sendFile("static_page.html", {root: "public/static/"});
@@ -68,12 +64,6 @@ app.post('/', (req, res) => {
     res.render("user_form", {nom: nameObject.lastName, prenom: nameObject.firstName})
 })
 
-// This is the function to render static html in Express. Adapt it and use it for one of your own pages
-// app.get('/', function(request, response){
-//     response.sendFile('absolutePathToYour/htmlPage.html');
-// });
-
-
 // This is where we import the routes folder and set up the server to detect the commands defined inside the users.js file
 const userRouter = require('./routes/chairs');
 const userRouter2 = require('./routes/misc')
@@ -86,4 +76,5 @@ function logger(req, res, next) {
     next();
 };
 
-app.listen(port_number);
+let portNumber = 3000;
+app.listen(portNumber, () => console.log(`Server online and listening on port ${portNumber}`));
