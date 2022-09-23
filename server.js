@@ -34,14 +34,7 @@ app.set('view engine', 'ejs');  // Setting up the viewing engine itself (install
 let port_number = 3000;
 
 app.get('/', (request, response, next) => {
-    console.log('Somebody has connected to our server...');  // This is what's logged on the developer's console
-    response.status(500).send(`Hello there, thank you for making contact on port ${port_number}!`); // This is what is received by the person contacting the page
-
-});
-
-// This is an example of deliver a static html page using express' "sendFile" method
-app.get('/stat', (request, response) => {
-    response.sendFile("static_page.html", {root: "public/"});
+    response.status(200).sendFile("static_page.html", {root: "public/static/"});
 });
 
 app.get("/swirl", (req, res) => {
