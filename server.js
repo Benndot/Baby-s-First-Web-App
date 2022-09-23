@@ -30,7 +30,7 @@ app.set('views', './views');  // Setting the directory where the viewing media i
 app.set('view engine', 'ejs');  // Setting up the viewing engine itself (installed package ejs + ejs language support extension)
 
 app.get('/', (request, response, next) => {
-    response.status(200).sendFile("static_page.html", {root: "public/static/"});
+    response.status(200).sendFile("greeting_page.html", {root: "public/static/"});
 });
 
 app.get("/swirl", (req, res) => {
